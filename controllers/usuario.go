@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/validation"
 )
 
@@ -228,5 +229,23 @@ func (c *UsuarioController) Delete() {
 	} else {
 		c.Data["json"] = err.Error()
 	}
+	c.ServeJSON()
+}
+
+// UploadFile method
+func (c *UsuarioController) UploadFile() {
+	file, header, err := c.GetFile("arquivo") // where <<this>> is the controller and <<file>> the id of your form field
+
+	if file != nil {
+		if err != nil {
+			logs.Error(err)
+		}
+		fileName := header.Filename
+		err := c.SaveToFile("arquivo", "/home/rof20004/"+fileName)
+		if err != nil {
+			logs.Error(err)
+		}
+	}
+
 	c.ServeJSON()
 }

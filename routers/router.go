@@ -22,4 +22,5 @@ func init() {
 	beego.Router("/usuario/edit/:id", &controllers.UsuarioController{}, "put:Put")
 	beego.Router("/usuario/save", &controllers.UsuarioController{}, "post:Post")
 	beego.Router("/usuario/delete/:id", &controllers.UsuarioController{}, "delete:Delete")
+	beego.Router("/usuario/file", &controllers.UsuarioController{}, "post:UploadFile")
 }
