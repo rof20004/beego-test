@@ -27,8 +27,6 @@ func (c *UsuarioController) URLMapping() {
 
 // Index url
 func (c *UsuarioController) Index() {
-	c.Data["Nome"] = "Rodolfo do Nascimento Azevedo"
-	c.Data["Idade"] = 32
 	c.TplName = "usuario/index.tpl"
 }
 
